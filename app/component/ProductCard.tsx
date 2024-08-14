@@ -43,7 +43,7 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
       )}
       <h2 className="text-lg font-semibold mb-2 truncate">{product.title}</h2>
       <p className="text-gray-600 dark:text-gray-400 mb-2 text-sm">{product.category}</p>
-      <p className="text-xl font-bold mb-4">Rs {product.price.toFixed(2)}</p>
+      <p className="text-xl font-bold mb-4">${product.price.toFixed(2)}</p>
       <button
         onClick={handleAddToCart}
         className={`w-full py-2 px-4 rounded transition-colors duration-200 ${

@@ -58,7 +58,7 @@ export default function Cart() {
               />
               <div className="flex-grow">
                 <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
-                <p className="text-gray-600 dark:text-gray-400 mb-2">Rs {item.price.toFixed(2)}</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-2">${item.price.toFixed(2)}</p>
                 <div className="flex items-center">
                   <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">-</button>
                   <span className="mx-2">{item.quantity}</span>
@@ -69,7 +69,7 @@ export default function Cart() {
             </div>
           ))}
           <div className="mt-8">
-            <p className="text-xl font-bold">Subtotal: Rs {subtotal.toFixed(2)}</p>
+            <p className="text-xl font-bold">Subtotal: ${subtotal.toFixed(2)}</p>
             <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-200">
               Proceed to Checkout
             </button>
