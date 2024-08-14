@@ -1,0 +1,46 @@
+
+
+[
+    {
+      "id": 1,
+      "name": "Smartphone X",
+      "price": 599.99,
+      "image": "/images/smartphone.jpg",
+      "description": "Latest model with advanced features."
+    },
+    {
+      "id": 2,
+      "name": "Laptop Pro",
+      "price": 1299.99,
+      "image": "/images/laptop.jpg",
+      "description": "Powerful laptop for professionals."
+    },
+    {
+      "id": 3,
+      "name": "Wireless Earbuds",
+      "price": 149.99,
+      "image": "/images/earbuds.jpg",
+      "description": "High-quality sound with long battery life."
+    },
+    {
+      "id": 4,
+      "name": "Smart Watch",
+      "price": 249.99,
+      "image": "/images/smartwatch.jpg",
+      "description": "Track your fitness and stay connected."
+    },
+    {
+      "id": 5,
+      "name": "4K TV",
+      "price": 799.99,
+      "image": "/images/tv.jpg",
+      "description": "Immersive viewing experience with vibrant colors."
+    },
+    {
+      "id": 6,
+      "name": "Gaming Console",
+      "price": 499.99,
+      "image": "/images/console.jpg",
+      "description": "Next-gen gaming with stunning graphics."
+    }
+  ]
