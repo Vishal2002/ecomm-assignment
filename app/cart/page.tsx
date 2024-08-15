@@ -1,49 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-interface CartItem {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
-
+import { useCart } from '../component/CartContext';
+import EmptyCart from '../../public/delete.svg';
 export default function Cart() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const { cart, removeFromCart, updateQuantity } = useCart();
 
-  useEffect(() => {
-    // In a real application, you'd fetch this from an API or local storage
-    const mockCartItems: CartItem[] = [
-      { id: 1, title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops", price: 109.95, image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", quantity: 1 },
-      { id: 2, title: "Mens Casual Premium Slim Fit T-Shirts", price: 22.3, image: "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg", quantity: 1 },
-    ];
-    setCartItems(mockCartItems);
-  }, []);
-
-  const updateQuantity = (id: number, newQuantity: number) => {
-    setCartItems(cartItems.map(item => 
-      item.id === id ? { ...item, quantity: Math.max(0, newQuantity) } : item
-    ));
-  };
-
-  const removeItem = (id: number) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
+      <h1 className="text-3xl text-center font-bold mb-8">Your Cart</h1>
+      {cart.length === 0 ? (
+        <div className='flex justify-center items-center flex-col w-full'>
+          <Image alt='Image' src={EmptyCart} width={300} height={300} />
+          <p className='text-xl font-bold'>Your cart is empty.</p>
+        </div>
+       
       ) : (
         <>
-          {cartItems.map(item => (
+          {cart.map(item => (
             <div key={item.id} className="flex items-center mb-4 p-4 border dark:border-gray-700 rounded bg-white dark:bg-gray-800">
               <Image 
                 src={item.image} 
@@ -65,7 +42,7 @@ export default function Cart() {
                   <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">+</button>
                 </div>
               </div>
-              <button onClick={() => removeItem(item.id)} className="text-black border p-2 rounded-lg font-bold bg-red-500 dark:text-white">Remove</button>
+              <button onClick={() => removeFromCart(item.id)} className=" p-2 border bg-red-500 hover:bg-red-400  text-black rounded-lg dark:text-white">Remove</button>
             </div>
           ))}
           <div className="mt-8">
@@ -76,7 +53,8 @@ export default function Cart() {
           </div>
         </>
       )}
-      <Link href="/" className="mt-8 inline-block text-blue-500 dark:text-blue-400 hover:underline">
+      
+      <Link href="/" className="mt-8 border justify-center p-2 bg-green-500 font-bold  inline-block rounded-lg text-black dark:text-white hover:bg-green-400">
         Continue Shopping
       </Link>
     </div>

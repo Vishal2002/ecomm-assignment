@@ -1,5 +1,9 @@
+'use client'
+
 import Image from 'next/image';
 import { useState } from 'react';
+import { useCart } from './CartContext';
+import { HeartIcon } from 'lucide-react';
 
 interface Product {
   id: number;
@@ -12,28 +16,34 @@ interface Product {
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
 }
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export default function ProductCard({ product }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    onAddToCart(product);
+    addToCart(product);
     setIsAdded(true);
-    setTimeout(() => setIsAdded(false), 1500);
   };
 
   return (
-    <div className="border dark:border-gray-700 rounded-lg p-4 shadow-md bg-white dark:bg-gray-800 bg-transparent transition-colors duration-200">
+    <div className="border relative dark:border-gray-700 rounded-lg p-4 shadow-md bg-white dark:bg-gray-800 transition-colors duration-200">
+  <div className='absolute right-2 top-2'>
+  {isAdded ? (
+    <HeartIcon className="text-red-500 fill-current" />
+  ) : (
+    <HeartIcon className="text-gray-400" />
+  )}
+</div>
       {!imageError ? (
         <Image 
           src={product.image} 
           alt={product.title} 
           width={300} 
           height={300} 
-          className="w-full  h-64 mix-blend-multiply dark:mix-blend-normal  object-contain mb-4"
+          className="w-full h-64 object-contain mb-4"
           onError={() => setImageError(true)}
         />
       ) : (
