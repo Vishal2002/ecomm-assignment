@@ -15,7 +15,6 @@ export default function Cart() {
 
   const handleCheckout = () => {
     setCheckoutClicked(true);
-    // Implement checkout logic here
     setTimeout(() => {
     
       setCheckoutClicked(false);
