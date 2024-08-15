@@ -17,11 +17,11 @@ export default function Navigation() {
           <button onClick={toggleTheme} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          <Link href="/cart" className="hover:text-gray-600 flex gap-1 dark:hover:text-gray-300">
+          <Link href="/cart" className="hover:text-gray-600 flex gap-1 relative dark:hover:text-gray-300">
                {
                 cart && cart.length>0
                 ?
-                <div className=' bg-red-500 text-white flex justify-center items-center text-xs border rounded-full absolute right-12 top-4 h-4 w-4'>
+                <div className=' bg-red-500 text-white flex justify-center items-center text-xs border rounded-full absolute right-[-10px] top-[-6px] h-4 w-4'>
                  {cart.length}
                 </div>
                 :
