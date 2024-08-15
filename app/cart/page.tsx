@@ -17,7 +17,7 @@ export default function Cart() {
     setCheckoutClicked(true);
     // Implement checkout logic here
     setTimeout(() => {
-      alert('Checkout process initiated!');
+    
       setCheckoutClicked(false);
     }, 2000);
   };
