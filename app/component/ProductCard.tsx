@@ -29,7 +29,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="border relative dark:border-gray-700 rounded-lg p-4 shadow-md bg-white dark:bg-gray-800 transition-colors duration-200">
+    <div className="border relative dark:border-gray-700 rounded-lg p-4 shadow-md bg-white dark:bg-gray-800 transition-all duration-300 hover:shadow-lg hover:scale-105">
   <div className='absolute right-2 top-2'>
   {isAdded ? (
     <HeartIcon className="text-red-500 fill-current" />
